@@ -3,18 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xxx</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Meine Website</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-    <div class="background-video">
-        <video autoplay muted loop volume="0.7">
-            <source src="hintergrundvideo.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="content">
+    <video id="myVideo" autoplay controls>
+        <source src="video.mp4" type="video/mp4">
+        Ihr Browser unterstützt das Video-Tag nicht.
+    </video>
 
-        <p></p>
-    </div>
+    <script>
+        const video = document.getElementById("myVideo");
+
+        // Wechseln in den Vollbildmodus, wenn die Seite geladen wird
+        document.addEventListener("DOMContentLoaded", function() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) { // Firefox
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari und Opera
+                document.documentElement.webkitRequestFullscreen();
+            }
+            
+            video.play(); // Video automatisch abspielen
+        });
+    </script>
 </body>
 </html>
